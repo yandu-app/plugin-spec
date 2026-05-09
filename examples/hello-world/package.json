@@ -1,0 +1,15 @@
+{
+  "name": "yandu-plugin-hello",
+  "version": "1.0.0",
+  "description": "Minimal Yandu plugin example",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@yandu/types": "^1.0.0",
+    "typescript": "^5.0.0"
+  }
+}

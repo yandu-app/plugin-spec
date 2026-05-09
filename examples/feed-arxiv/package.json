@@ -1,0 +1,15 @@
+{
+  "name": "yandu-plugin-feed-arxiv",
+  "version": "1.0.0",
+  "description": "arXiv feed adapter for Yandu",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@yandu/types": "^1.0.0",
+    "typescript": "^5.0.0"
+  }
+}
