@@ -1,0 +1,18 @@
+{
+  "name": "yandu-plugin-translate-google-free",
+  "version": "1.0.0",
+  "description": "Google Translate adapter for Yandu",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@vitalets/google-translate-api": "^9.2.0"
+  },
+  "devDependencies": {
+    "@yandu/types": "^1.0.0",
+    "typescript": "^5.0.0"
+  }
+}

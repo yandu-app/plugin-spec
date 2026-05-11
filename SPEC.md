@@ -90,6 +90,7 @@ export type CapabilityType =
   | 'converter'
   | 'search'
   | 'im'
+  | 'embedding'
   | 'import'
   | 'tool'
   | 'config';
@@ -161,7 +162,19 @@ export interface IMAdapter {
 }
 ```
 
-### 5.6 Import (`type: 'import'`)
+### 5.6 Embedding (`type: 'embedding'`)
+
+```typescript
+export interface EmbeddingAdapter {
+  id: string;
+  name: string;
+  model: string;
+  dimensions: number;
+  embed(texts: string[]): Promise<number[][]>;
+}
+```
+
+### 5.7 Import (`type: 'import'`)
 
 ```typescript
 export interface ImportAdapter {
@@ -172,7 +185,7 @@ export interface ImportAdapter {
 }
 ```
 
-### 5.7 Tool (`type: 'tool'`)
+### 5.8 Tool (`type: 'tool'`)
 
 Tools are registered directly on `system.registry`:
 
@@ -185,7 +198,7 @@ system.registry.register({
 });
 ```
 
-### 5.8 Config (`type: 'config'`)
+### 5.9 Config (`type: 'config'`)
 
 Config-only plugins register a `ConfigSchema`:
 

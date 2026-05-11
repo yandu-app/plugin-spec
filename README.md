@@ -40,6 +40,7 @@ Package naming: `yandu-plugin-*`. Yandu auto-discovers these from `node_modules`
 | `converter` | Convert documents (e.g. PDF to Markdown) | `ContentConverter` |
 | `search` | Search papers across backends | `SearchAdapter` |
 | `im` | Instant messaging bot integration | `IMAdapter` |
+| `embedding` | Text embedding models | `EmbeddingAdapter` |
 | `import` | Import papers from external libraries | `ImportAdapter` |
 | `tool` | Agent-accessible tool | `Tool` |
 | `config` | Settings schema only (no runtime code) | `ConfigSchema` |
