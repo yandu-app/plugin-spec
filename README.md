@@ -29,7 +29,7 @@ export default {
 } satisfies Plugin;
 ```
 
-Package naming: `yandu-plugin-*`. Yandu auto-discovers these from `node_modules` at startup.
+Package naming: `yandu-plugin-*` (third-party) or `@yandu/plugin-*` (official / built-in). Yandu auto-discovers both from `node_modules` at startup.
 
 ## Capability Types
 

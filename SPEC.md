@@ -4,7 +4,12 @@ Version: 1.0.0
 
 ## 1. Overview
 
-A Yandu plugin is an npm package named `yandu-plugin-*` that exports a `Plugin` object. The plugin registers capabilities into Yandu's runtime through a single `register(system)` call.
+A Yandu plugin is an npm package that exports a `Plugin` object. The plugin registers capabilities into Yandu's runtime through a single `register(system)` call. Two package-name namespaces are supported:
+
+- **`@yandu/plugin-*`** — official / built-in plugins shipped under the `@yandu` scope.
+- **`yandu-plugin-*`** — third-party plugins published unscoped on npm.
+
+Yandu treats both namespaces identically at load time. The distinction is naming convention only.
 
 Key design principles:
 - **Uniform interface**: All plugins use the same `Plugin` interface regardless of capability type.
@@ -24,7 +29,7 @@ export interface Plugin {
 
 ### 2.1 Entry Point Resolution
 
-When Yandu scans `node_modules` for `yandu-plugin-*` packages, it resolves the entry point in this order:
+When Yandu scans `node_modules` for plugin packages (`yandu-plugin-*` and `@yandu/plugin-*`), it resolves the entry point in this order:
 
 1. `package.json` field `yandu.main`
 2. `package.json` field `module`
@@ -212,7 +217,7 @@ system.capabilities.register(
 ## 6. Plugin Lifecycle
 
 ```
-Scan node_modules for yandu-plugin-*
+Scan node_modules for yandu-plugin-* and @yandu/plugin-*
   |
   v
 For each: resolve entry, dynamic import
@@ -244,13 +249,23 @@ Protected tools cannot be overridden. The `CapabilityRegistry` is sandboxed: plu
 
 ## 8. Naming Conventions
 
-Package: `yandu-plugin-{type}-{name}`
+Package name follows one of two conventions:
 
-Examples:
+- **Official / built-in**: `@yandu/plugin-{type}-{name}` — published under the `@yandu` scope.
+- **Third-party**: `yandu-plugin-{type}-{name}` — unscoped on npm.
+
+Both are auto-discovered by Yandu at startup. Use the scoped form only if the package is part of the official `@yandu` ecosystem; third-party authors should use the unscoped form.
+
+Examples (third-party):
 - `yandu-plugin-translate-google-free`
 - `yandu-plugin-feed-arxiv`
 - `yandu-plugin-converter-pdf`
 - `yandu-plugin-im-telegram`
+
+Examples (built-in):
+- `@yandu/plugin-translate-baidu`
+- `@yandu/plugin-feed-rss`
+- `@yandu/plugin-converter-paddleocr`
 
 Capability IDs: `{vendor}.{name}`
 
@@ -278,7 +293,11 @@ Semantic versioning. Major = breaking interface changes, Minor = new features, P
 ## 12. Distribution
 
 ```bash
+# third-party plugin
 npm install yandu-plugin-translate-google-free
+
+# official / built-in plugin (scoped)
+npm install @yandu/plugin-translate-baidu
 ```
 
 For development:
