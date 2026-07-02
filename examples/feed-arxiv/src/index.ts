@@ -20,7 +20,7 @@ const adapter: FeedAdapter = {
     };
   },
 
-  async fetchFormat(query, format) {
+  async fetchFormat(query, _format) {
     return this.fetch(query);
   },
 
